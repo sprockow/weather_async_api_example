@@ -9,7 +9,13 @@ export async function getCurrentWeather(city) {
 
   const weatherData = await response.json();
 
-  await new Promise((resolve) => window.setTimeout(resolve, 500));
+  if (city === "Melbourne") {
+    await new Promise((resolve) => window.setTimeout(resolve, 2000));
+  } else {
+    await new Promise((resolve) =>
+      window.setTimeout(resolve, Math.random() * 500)
+    );
+  }
 
   return weatherData.current.temp_c;
 }

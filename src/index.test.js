@@ -11,6 +11,7 @@ describe("tests", () => {
   it("single city", (cb) => {
     iterateThroughCities(["Atlanta"]).then((response) => {
       expect(response).toHaveLength(1);
+      expect(response[0].city).toEqual("Atlanta");
       cb();
     });
   });
