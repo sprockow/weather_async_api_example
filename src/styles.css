@@ -1,0 +1,27 @@
+body {
+  font-family: sans-serif;
+}
+
+.main {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+dl {
+  flex: 1;
+}
+
+button.toggle {
+  flex: 1;
+}
+
+dd,
+dt {
+  display: inline;
+}
+
+dd:after {
+  content: " ";
+  display: block;
+}

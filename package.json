@@ -1,0 +1,22 @@
+{
+  "name": "jest-test-forked",
+  "version": "0.0.46",
+  "description": null,
+  "keywords": [],
+  "homepage": "https://codesandbox.io/s/n9m2w9q8x0",
+  "main": "index.js",
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-scripts": "4.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  }
+}
