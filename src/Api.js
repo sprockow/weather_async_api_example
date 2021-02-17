@@ -9,7 +9,7 @@ export async function getCurrentWeather(city) {
 
   const weatherData = await response.json();
 
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  await new Promise((resolve) => window.setTimeout(resolve, 500));
 
   return weatherData.current.temp_c;
 }
