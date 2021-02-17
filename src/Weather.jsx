@@ -11,12 +11,22 @@ export async function iterateThroughCities(cityList) {
   return responseArray;
 }
 
+export async function fetchCitiesInParallel(cityList) {
+  const promiseArray = [];
+
+  for (const city of cityList) {
+    const cityWeatherPromise = getCurrentWeather(city);
+    promiseArray.push(cityWeatherPromise);
+  }
+  return Promise.all(promiseArray);
+}
+
 export default function Weather({ cityList }) {
   const [weather, setWeather] = useState([]);
 
   useEffect(() => {
     setWeather([]);
-    iterateThroughCities(cityList).then((responseArray) => {
+    fetchCitiesInParallel(cityList).then((responseArray) => {
       setWeather(responseArray);
     });
   }, [setWeather, cityList]);
