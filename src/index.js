@@ -3,22 +3,40 @@ import { render } from "react-dom";
 import Weather from "./Weather";
 import "./styles.css";
 
-const primaryLocations = ["Krakow", "Indianapolis", "Detroit"];
+const WesternHemisphere = [
+  "Atlanta",
+  "Indianapolis",
+  "Kokomo",
+  "Detroit",
+  "New York",
+  "Houston",
+  "Los Angeles",
+  "Seattle",
+  "Calgary"
+];
 
-const secondaryLocations = ["Melbourne", "Shanghai", "Mumbai", "Capetown"];
+const EasternHemisphere = [
+  "Shanghai",
+  "Mumbai",
+  "Delhi",
+  "Melbourne",
+  "Bejing",
+  "Bangkok",
+  "Tokyo"
+];
 
 const App = () => {
-  const [primary, setPrimary] = useState(true);
+  const [useWest, setWest] = useState(true);
 
   function toggleLocations() {
-    setPrimary(!primary);
+    setWest(!useWest);
   }
 
   return (
     <div className="main">
-      <Weather cityList={primary ? primaryLocations : secondaryLocations} />
+      <Weather cityList={useWest ? WesternHemisphere : EasternHemisphere} />
       <button className="toggle" onClick={toggleLocations}>
-        {primary ? "Use List 1" : "Use List 2"}
+        {useWest ? "Eastern" : "Western"}
       </button>
     </div>
   );
