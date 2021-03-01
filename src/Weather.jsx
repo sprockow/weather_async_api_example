@@ -28,7 +28,7 @@ export default function Weather({ cityList }) {
           return (
             <Fragment key={`${cityWeather.city}`}>
               <dt>{cityWeather.city}</dt>
-              <dd>{cityWeather.temp_c}</dd>
+              <dd>{cityWeather.temp_c}&deg; </dd>
             </Fragment>
           );
         })
