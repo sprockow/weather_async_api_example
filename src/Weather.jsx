@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import { getCurrentWeather } from "./Api";
 
 export async function iterateThroughCities(cityList) {
@@ -6,7 +6,14 @@ export async function iterateThroughCities(cityList) {
 
   for (const city of cityList) {
     const temp_c = await getCurrentWeather(city);
-    responseArray.push({ city, temp_c });
+
+    // Required data format for list
+    const listEntry = {
+      temp_c,
+      city: city
+    };
+
+    responseArray.push(listEntry);
   }
   return responseArray;
 }
@@ -15,26 +22,25 @@ export default function Weather({ cityList }) {
   const [weather, setWeather] = useState([]);
 
   useEffect(() => {
-    setWeather([]);
     iterateThroughCities(cityList).then((responseArray) => {
       setWeather(responseArray);
     });
   }, [setWeather, cityList]);
 
   return (
-    <dl>
+    <ul>
       {weather.length ? (
         weather.map((cityWeather) => {
           return (
-            <Fragment key={`${cityWeather.city}`}>
-              <dt>{cityWeather.city}</dt>
-              <dd>{cityWeather.temp_c}&deg; </dd>
-            </Fragment>
+            <li key={`${cityWeather.city}`}>
+              <span>{cityWeather.city}</span>
+              <span>{cityWeather.temp_c}&deg; </span>
+            </li>
           );
         })
       ) : (
         <span>Loading...</span>
       )}
-    </dl>
+    </ul>
   );
 }

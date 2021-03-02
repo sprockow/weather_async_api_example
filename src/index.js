@@ -34,9 +34,12 @@ const App = () => {
 
   return (
     <div className="main">
-      <Weather cityList={useWest ? WesternHemisphere : EasternHemisphere} />
+      <div className="list-container">
+        <h1>{useWest ? "Western Hemisphere" : "Eastern Hemisphere"}</h1>
+        <Weather cityList={useWest ? WesternHemisphere : EasternHemisphere} />
+      </div>
       <button className="toggle" onClick={toggleLocations}>
-        {useWest ? "Eastern" : "Western"}
+        {useWest ? "Show Eastern" : "Show Western"}
       </button>
     </div>
   );
